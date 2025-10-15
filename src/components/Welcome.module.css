@@ -1,0 +1,66 @@
+.section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #393d5a;
+}
+
+.section::before,
+.section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%; /* adjust as needed */
+  pointer-events: none;
+  z-index: 2;
+}
+
+.section::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+}
+
+.section::after {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 5% 8% 8% 8%;
+  position: absolute;
+  gap: 10px;
+  z-index: 4;
+}
+
+.wrapperHalfHeight {
+  height: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.bgImage {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  left: 0;
+  top: 0;
+  filter: brightness(0.9);
+}
+
+.smallImage {
+  height: 50%;
+  width: 50%;
+  position: absolute;
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
+  filter: brightness(0.9);
+}

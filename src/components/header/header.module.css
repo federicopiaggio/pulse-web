@@ -1,0 +1,90 @@
+.header {
+  background-color: rgba(51, 49, 49, 0.2);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.nav {
+  display: none;
+  gap: 2rem;
+}
+
+.navLink {
+  color: #fafafa;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: #6d79e6;
+}
+
+.mobileMenuButton {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburgerIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.mobileMenu {
+  padding: 0.5rem 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.mobileLink {
+  display: block;
+  color: #4b5563;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.mobileLink:hover {
+  color: #3b82f6;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    display: flex;
+  }
+  .mobileMenuButton {
+    display: none;
+  }
+  .mobileMenu {
+    display: none;
+  }
+}

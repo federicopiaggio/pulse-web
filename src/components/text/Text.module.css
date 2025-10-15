@@ -1,0 +1,32 @@
+.text {
+  color: var(--color-primary);
+}
+
+.heading {
+  /* text-transform: uppercase; */
+  font-family: var(--heading);
+  font-weight: 700;
+}
+
+.body {
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.h1 {
+  font-size: 120px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.h2 {
+  font-size: 64px;
+}
+
+.h3 {
+  font-size: 56px;
+}
+
+.h5 {
+  font-size: 24px;
+}
