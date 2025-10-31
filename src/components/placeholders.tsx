@@ -1,6 +1,6 @@
-export const Video = () => <div>Video Component (TODO)</div>;
-export const Benefits = () => <div>Benefits Component (TODO)</div>;
-export const About = () => <div>About Component (TODO)</div>;
-export const Contact = () => <div>Contact Component (TODO)</div>;
-export const WhatsAppButton = () => <div>WhatsApp Button (TODO)</div>;
-export const Banner = () => <div>Banner Component (TODO)</div>;
+export { default as Video } from './video/Video';
+export { default as Banner } from './banner/Banner';
+export { default as Benefits } from './benefits/Benefits';
+export { default as About } from './about/About';
+export { default as Contact } from './contact/Contact';
+export { default as WhatsAppButton } from './whatsapp/WhatsAppButton';
