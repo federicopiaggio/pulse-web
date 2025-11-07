@@ -26,10 +26,11 @@ export default function Welcome() {
       <section className={styles.section}>
         <Image
           className={clsx("rellax", styles.bgImage)}
-          style={{ transform: "scale(1.3)", left: "15%", top: "-85px" }}
           src="/assets/foto1.webp"
           alt="slide 1"
-          fill
+          width={1920}
+          height={1080}
+          data-rellax-speed="-1"
           priority
         />
         <div className={styles.content}>
@@ -57,10 +58,12 @@ export default function Welcome() {
           alt="slide 3"
           width={400}
           height={400}
+          data-rellax-speed="1"
         />
         <div
-          className={styles.content}
+          className={clsx("rellax", styles.content)}
           style={{ justifyContent: "space-between" }}
+          data-rellax-speed="-1"
         >
           <div style={{ width: "50%" }}>
             <div
