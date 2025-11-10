@@ -69,6 +69,29 @@
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
 }
 
+.inputError {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+}
+
+.error {
+  color: #dc2626;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button:disabled:hover {
+  background-color: #9ca3af;
+  transform: none;
+}
+
 .buttonWrapper {
   text-align: center;
 }
@@ -94,6 +117,13 @@
   margin-top: 1.5rem;
   text-align: center;
   color: #059669;
+  font-weight: 600;
+}
+
+.formError {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #dc2626;
   font-weight: 600;
 }
 

@@ -9,11 +9,15 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "clsx": "^2.1.1",
     "next": "15.5.5",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "rellax": "^1.12.1"
+    "react-hook-form": "^7.66.0",
+    "rellax": "^1.12.1",
+    "resend": "^6.4.2",
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

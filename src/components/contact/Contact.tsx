@@ -1,115 +1,161 @@
 "use client";
 
-import React, { useState } from 'react';
-import styles from './contact.module.css';
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import styles from "./contact.module.css";
+
+// Schema de validación con Zod
+const contactSchema = z.object({
+  name: z
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .max(50, "Name is too long"),
+  company: z.string().optional(),
+  email: z.string().email("Please enter a valid email address"),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(500, "Message is too long"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    company: '',
-    email: '',
-    message: ''
-  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // In a real application, you would send the form data to a server here.
-    // For this demo, we'll just show the success message.
-    console.log('Form submitted:', formData);
-    
-    // Reset form
-    setFormData({
-      name: '',
-      company: '',
-      email: '',
-      message: ''
-    });
-    
-    // Show success message
-    setShowSuccess(true);
-    
-    // Hide success message after 5 seconds
-    setTimeout(() => {
-      setShowSuccess(false);
-    }, 5000);
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+    setShowError(false);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        reset();
+        setShowSuccess(true);
+        setTimeout(() => setShowSuccess(false), 5000);
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setShowError(true);
+      setTimeout(() => setShowError(false), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.heading}>
-          <h2 className={styles.title}>Ready to Find Your Team&apos;s Pulse?</h2>
+          <h2 className={styles.title}>
+            Ready to Find Your Team&apos;s Pulse?
+          </h2>
           <p className={styles.subtitle}>
-            Contact us today for a personalized quote for your group in Bariloche.
+            Contact us today for a personalized quote for your group in
+            Bariloche.
           </p>
         </div>
         <div className={styles.formWrapper}>
-          <form onSubmit={handleSubmit} className={styles.form}>
+          <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
             <div className={styles.formGroup}>
-              <label htmlFor="name" className={styles.label}>Name</label>
+              <label htmlFor="name" className={styles.label}>
+                Name
+              </label>
               <input
                 type="text"
                 id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className={styles.input}
-                required
+                {...register("name")}
+                className={`${styles.input} ${
+                  errors.name ? styles.inputError : ""
+                }`}
               />
+              {errors.name && (
+                <span className={styles.error}>{errors.name.message}</span>
+              )}
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="company" className={styles.label}>Company</label>
+              <label htmlFor="company" className={styles.label}>
+                Company
+              </label>
               <input
                 type="text"
                 id="company"
-                name="company"
-                value={formData.company}
-                onChange={handleChange}
+                {...register("company")}
                 className={styles.input}
               />
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="email" className={styles.label}>Email</label>
+              <label htmlFor="email" className={styles.label}>
+                Email
+              </label>
               <input
                 type="email"
                 id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className={styles.input}
-                required
+                {...register("email")}
+                className={`${styles.input} ${
+                  errors.email ? styles.inputError : ""
+                }`}
               />
+              {errors.email && (
+                <span className={styles.error}>{errors.email.message}</span>
+              )}
             </div>
             <div className={styles.formGroup}>
-              <label htmlFor="message" className={styles.label}>Message</label>
+              <label htmlFor="message" className={styles.label}>
+                Message
+              </label>
               <textarea
                 id="message"
-                name="message"
                 rows={4}
-                value={formData.message}
-                onChange={handleChange}
-                className={styles.textarea}
-                required
+                {...register("message")}
+                className={`${styles.textarea} ${
+                  errors.message ? styles.inputError : ""
+                }`}
               />
+              {errors.message && (
+                <span className={styles.error}>{errors.message.message}</span>
+              )}
             </div>
             <div className={styles.buttonWrapper}>
-              <button type="submit" className={styles.button}>
-                Send Inquiry
+              <button
+                type="submit"
+                className={styles.button}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send Inquiry"}
               </button>
             </div>
           </form>
           {showSuccess && (
             <div className={styles.formSuccess}>
               Thank you for your message! We&apos;ll be in touch soon.
+            </div>
+          )}
+          {showError && (
+            <div className={styles.formError}>
+              There was an error sending your message. Please try again.
             </div>
           )}
         </div>
