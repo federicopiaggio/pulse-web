@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_AR",
-    url: "https://pulsebariloche.com",
+    url: "https://pulsebariloche.com.ar",
     siteName: "Pulse Bariloche",
     title: "Pulse Bariloche - Team Building Through Rhythm",
     description:
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(
     process.env.NODE_ENV === "production"
-      ? "https://pulsebariloche.com"
+      ? "https://pulsebariloche.com.ar"
       : "http://localhost:3000"
   ),
 };

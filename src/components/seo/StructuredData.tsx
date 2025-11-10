@@ -7,7 +7,7 @@ export default function StructuredData() {
     name: "Pulse Bariloche",
     description:
       "Team building musical experiences in Bariloche using Rhythmic Sign Language. Unite your team through rhythm with professional group activities.",
-    url: "https://pulsebariloche.com",
+    url: "https://pulsebariloche.com.ar",
     telephone: "+54-xxx-xxx-xxxx", // Agregar tu teléfono real
     email: "federicopiaggio26@gmail.com",
     address: {

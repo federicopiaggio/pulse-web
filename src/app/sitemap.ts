@@ -3,7 +3,7 @@ import { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl =
     process.env.NODE_ENV === "production"
-      ? "https://pulsebariloche.com"
+      ? "https://pulsebariloche.com.ar"
       : "http://localhost:3000";
 
   return [
