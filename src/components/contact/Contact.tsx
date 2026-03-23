@@ -43,7 +43,9 @@ export const Contact = () => {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     setShowError(false);
-    setErrorMessage("There was an error sending your message. Please try again.");
+    setErrorMessage(
+      "There was an error sending your message. Please try again.",
+    );
 
     try {
       const response = await fetch("/api/contact", {
@@ -59,9 +61,9 @@ export const Contact = () => {
         setShowSuccess(true);
         setTimeout(() => setShowSuccess(false), 5000);
       } else {
-        const responseBody = (await response.json().catch(() => null)) as
-          | { error?: string }
-          | null;
+        const responseBody = (await response.json().catch(() => null)) as {
+          error?: string;
+        } | null;
 
         throw new Error(responseBody?.error || "Failed to send message");
       }
@@ -165,11 +167,7 @@ export const Contact = () => {
               Thank you for your message! We&apos;ll be in touch soon.
             </div>
           )}
-          {showError && (
-            <div className={styles.formError}>
-              {errorMessage}
-            </div>
-          )}
+          {showError && <div className={styles.formError}>{errorMessage}</div>}
         </div>
       </div>
     </section>

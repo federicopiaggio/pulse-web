@@ -81,10 +81,7 @@ export async function POST(request: NextRequest) {
         typeof error === "object" && error && "message" in error
           ? String(error.message)
           : "Failed to send email";
-      return NextResponse.json(
-        { error: resendMessage },
-        { status: 500 },
-      );
+      return NextResponse.json({ error: resendMessage }, { status: 500 });
     }
 
     return NextResponse.json(
