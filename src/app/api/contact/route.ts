@@ -3,17 +3,26 @@ import { Resend } from "resend";
 import { z } from "zod";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const contactEmail = process.env.CONTACT_EMAIL;
 
 // Schema de validación
 const contactSchema = z.object({
   name: z.string().min(2).max(50),
   company: z.string().optional(),
-  email: z.string().email(),
+  email: z.email(),
   message: z.string().min(10).max(500),
 });
 
 export async function POST(request: NextRequest) {
   try {
+    if (!contactEmail) {
+      console.error("Missing CONTACT_EMAIL environment variable");
+      return NextResponse.json(
+        { error: "Server misconfiguration" },
+        { status: 500 },
+      );
+    }
+
     const body = await request.json();
 
     // Validar datos
@@ -22,7 +31,7 @@ export async function POST(request: NextRequest) {
     // Enviar email usando Resend
     const { data, error } = await resend.emails.send({
       from: "Pulse Bariloche <onboarding@resend.dev>", // Dominio temporal de Resend
-      to: [process.env.CONTACT_EMAIL || "federicopiaggio26@gmail.com"], // Tu email de destino
+      to: [contactEmail], // Email de destino configurado en entorno
       replyTo: validatedData.email, // El email del usuario para poder responder
       subject: `New Contact Form Submission from ${validatedData.name}`,
       html: `
@@ -58,13 +67,13 @@ export async function POST(request: NextRequest) {
       console.error("Resend error:", error);
       return NextResponse.json(
         { error: "Failed to send email" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
     return NextResponse.json(
       { message: "Email sent successfully", data },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("API error:", error);
@@ -72,13 +81,13 @@ export async function POST(request: NextRequest) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: "Invalid form data", details: error.issues },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

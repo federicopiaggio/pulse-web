@@ -1,0 +1,9 @@
+export { Video } from "./video/Video";
+export { Banner } from "./banner/Banner";
+export { Benefits } from "./benefits/Benefits";
+export { About } from "./about/About";
+export { Contact } from "./contact/Contact";
+export { WhatsAppButton } from "./whatsapp/WhatsAppButton";
+export { Header } from "./header/Header";
+export { StructuredData } from "./seo/StructuredData";
+export { Text } from "./text/Text";

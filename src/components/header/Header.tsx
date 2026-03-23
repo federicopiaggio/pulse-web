@@ -3,8 +3,9 @@
 import React, { useState } from "react";
 import { clsx } from "clsx";
 import styles from "./header.module.css";
+import Image from "next/image";
 
-export default function Header() {
+export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -32,6 +33,13 @@ export default function Header() {
             Contact
           </a>
         </nav>
+        <Image
+          width={40}
+          height={20}
+          src="/assets/icon.svg"
+          style={{ width: 80, aspectRatio: "6/2" }}
+          alt="icon"
+        />
         <button
           id="mobile-menu-button"
           className={styles.mobileMenuButton}
@@ -92,4 +100,4 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};

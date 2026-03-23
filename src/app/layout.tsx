@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import StructuredData from "@/components/seo/StructuredData";
+import { StructuredData } from "@/components";
 import "./globals.css";
 
 export const metadata: Metadata = {

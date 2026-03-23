@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import styles from "./contact.module.css";
+import { Text } from "@/components";
 
 // Schema de validación con Zod
 const contactSchema = z.object({
@@ -13,7 +14,7 @@ const contactSchema = z.object({
     .min(2, "Name must be at least 2 characters")
     .max(50, "Name is too long"),
   company: z.string().optional(),
-  email: z.string().email("Please enter a valid email address"),
+  email: z.email("Please enter a valid email address"),
   message: z
     .string()
     .min(10, "Message must be at least 10 characters")
@@ -22,7 +23,7 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
-export default function Contact() {
+export const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -69,9 +70,9 @@ export default function Contact() {
     <section id="contact" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.heading}>
-          <h2 className={styles.title}>
+          <Text as="h2" className={styles.title}>
             Ready to Find Your Team&apos;s Pulse?
-          </h2>
+          </Text>
           <p className={styles.subtitle}>
             Contact us today for a personalized quote for your group in
             Bariloche.
@@ -162,4 +163,4 @@ export default function Contact() {
       </div>
     </section>
   );
-}
+};

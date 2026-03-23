@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import Text from "../text/Text";
+import { Text } from "@/components";
 import styles from "../Welcome.module.css";
 
-export default function Banner() {
+export const Banner = () => {
   return (
     <section className={styles.section}>
       <div className={styles.wrapperHalfHeight}>
@@ -23,7 +23,7 @@ export default function Banner() {
           }}
         >
           <Text as="h2" variant="heading">
-            Unity
+            Unite
           </Text>
           <Text variant="body">How strong can we become if we come</Text>
           <Text variant="body">together into the same pulse?</Text>
@@ -54,4 +54,4 @@ export default function Banner() {
       </div>
     </section>
   );
-}
+};

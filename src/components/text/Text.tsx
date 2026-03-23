@@ -10,13 +10,15 @@ interface TextProps {
   children: React.ReactNode;
 }
 
-export default function Text({
-  variant = "body",
-  className,
-  as: Component = "span",
-  style,
-  children,
-}: TextProps) {
+export const Text = (props: TextProps) => {
+  const {
+    variant = "body",
+    className,
+    as: Component = "span",
+    style,
+    children,
+  } = props;
+
   const typoStyle = clsx(
     styles.text,
     styles[variant],
@@ -35,4 +37,4 @@ export default function Text({
       {children}
     </Component>
   );
-}
+};

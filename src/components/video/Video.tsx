@@ -1,14 +1,18 @@
-import React from 'react';
-import styles from './video.module.css';
+import React from "react";
+import styles from "./video.module.css";
+import { Text } from "@/components";
 
-export default function Video() {
+export const Video = () => {
   return (
     <section id="video" className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.title}>See the Experience in Action</h2>
-        <p className={styles.subtitle}>
-          Watch how our team building sessions unfold and feel the energy of the group coming together.
-        </p>
+        <Text as="h2" className={styles.title}>
+          See the Experience in Action
+        </Text>
+        <Text as="p" className={styles.subtitle}>
+          Watch how our team building sessions unfold and feel the energy of the
+          group coming together.
+        </Text>
         <div className={styles.videoWrapper}>
           <div className={styles.videoResponsiveWrapper}>
             <iframe
@@ -23,4 +27,4 @@ export default function Video() {
       </div>
     </section>
   );
-}
+};

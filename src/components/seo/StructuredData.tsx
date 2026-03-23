@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-export default function StructuredData() {
+export const StructuredData = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -61,4 +61,4 @@ export default function StructuredData() {
       dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
     />
   );
-}
+};

@@ -3,16 +3,16 @@
 import React from "react";
 import Image from "next/image";
 import { clsx } from "clsx";
-import Text from "./text/Text";
-import Header from "./header/Header";
 import {
+  Text,
   Video,
   Benefits,
   About,
   Contact,
   WhatsAppButton,
   Banner,
-} from "./placeholders";
+  Header,
+} from "@/components";
 import { useRellax } from "../hooks/useRellax";
 import styles from "./Welcome.module.css";
 
