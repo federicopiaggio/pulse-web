@@ -2,8 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resendApiKey = process.env.RESEND_API_KEY;
 const contactEmail = process.env.CONTACT_EMAIL;
+const resendFromEmail =
+  process.env.RESEND_FROM_EMAIL || "Pulse Bariloche <onboarding@resend.dev>";
 
 // Schema de validación
 const contactSchema = z.object({
@@ -15,13 +17,23 @@ const contactSchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
-    if (!contactEmail) {
-      console.error("Missing CONTACT_EMAIL environment variable");
+    if (!resendApiKey) {
+      console.error("Missing RESEND_API_KEY environment variable");
       return NextResponse.json(
-        { error: "Server misconfiguration" },
+        { error: "Server misconfiguration: missing RESEND_API_KEY" },
         { status: 500 },
       );
     }
+
+    if (!contactEmail) {
+      console.error("Missing CONTACT_EMAIL environment variable");
+      return NextResponse.json(
+        { error: "Server misconfiguration: missing CONTACT_EMAIL" },
+        { status: 500 },
+      );
+    }
+
+    const resend = new Resend(resendApiKey);
 
     const body = await request.json();
 
@@ -30,7 +42,7 @@ export async function POST(request: NextRequest) {
 
     // Enviar email usando Resend
     const { data, error } = await resend.emails.send({
-      from: "Pulse Bariloche <onboarding@resend.dev>", // Dominio temporal de Resend
+      from: resendFromEmail,
       to: [contactEmail], // Email de destino configurado en entorno
       replyTo: validatedData.email, // El email del usuario para poder responder
       subject: `New Contact Form Submission from ${validatedData.name}`,
@@ -65,8 +77,12 @@ export async function POST(request: NextRequest) {
 
     if (error) {
       console.error("Resend error:", error);
+      const resendMessage =
+        typeof error === "object" && error && "message" in error
+          ? String(error.message)
+          : "Failed to send email";
       return NextResponse.json(
-        { error: "Failed to send email" },
+        { error: resendMessage },
         { status: 500 },
       );
     }
