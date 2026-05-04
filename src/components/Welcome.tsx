@@ -73,7 +73,7 @@ export default function Welcome() {
           <div className={styles.joinMediaColumn}>
             <div className={styles.joinImageFlip}>
               <Image
-                className={clsx("rellax", styles.smallImage, styles.joinImage)}
+                className={clsx("rellax", styles.joinImage)}
                 src="/assets/duo-2.png"
                 alt="People playing percussion together"
                 width={1433}

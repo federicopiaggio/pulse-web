@@ -122,6 +122,8 @@
   flex-direction: column;
   gap: 0.75rem;
   max-width: 32rem;
+  position: relative;
+  z-index: 3;
 }
 
 .joinDescription {
@@ -134,11 +136,14 @@
   flex-direction: column;
   gap: 1.5rem;
   align-items: flex-end;
+  position: relative;
+  z-index: 1;
 }
 
 .joinImageFlip {
   width: min(100%, 760px);
   transform: scaleX(-1);
+  overflow: hidden;
 }
 
 .joinImage {
