@@ -3,6 +3,11 @@ import { StructuredData } from "@/components";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NODE_ENV === "production"
+      ? "https://pulsebariloche.com.ar"
+      : "http://localhost:3000",
+  ),
   title: {
     default: "Pulse Bariloche - Team Building Through Rhythm",
     template: "%s | Pulse Bariloche",
@@ -22,6 +27,10 @@ export const metadata: Metadata = {
   authors: [{ name: "Pulse Bariloche" }],
   creator: "Pulse Bariloche",
   publisher: "Pulse Bariloche",
+  alternates: {
+    canonical: "/",
+  },
+  category: "Team building",
   robots: {
     index: true,
     follow: true,
@@ -36,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_AR",
-    url: "https://pulsebariloche.com.ar",
+    url: "/",
     siteName: "Pulse Bariloche",
     title: "Pulse Bariloche - Team Building Through Rhythm",
     description:
@@ -61,11 +70,6 @@ export const metadata: Metadata = {
     icon: [{ url: "/assets/icon.svg", type: "image/svg+xml" }],
     apple: [{ url: "/assets/icon.svg" }],
   },
-  metadataBase: new URL(
-    process.env.NODE_ENV === "production"
-      ? "https://pulsebariloche.com.ar"
-      : "http://localhost:3000"
-  ),
 };
 
 export default function RootLayout({
@@ -78,7 +82,7 @@ export default function RootLayout({
       <head>
         <StructuredData />
       </head>
-      <body>{children}</body>
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }

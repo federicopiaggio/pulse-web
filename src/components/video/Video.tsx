@@ -16,8 +16,8 @@ export const Video = () => {
         <div className={styles.videoWrapper}>
           <div className={styles.videoResponsiveWrapper}>
             <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="YouTube video player"
+              src="https://www.youtube.com/embed/DTJ7s8Y7LYU"
+              title="Pulse - YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               className={styles.iframe}

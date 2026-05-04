@@ -1,8 +1,9 @@
 .section {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   background: #2b2e46;
 }
 
@@ -32,7 +33,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 100%;
+  min-height: 100vh;
   padding: 5% 8% 8% 8%;
   gap: 10px;
   position: relative;
@@ -54,17 +55,40 @@
 
 .videoWrapper {
   width: 70%;
+  max-width: 1120px;
   border-radius: 0.5rem;
   overflow: hidden;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
   background-color: black;
 }
 
+@media (max-width: 1024px) {
+  .videoWrapper {
+    width: 85%;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    min-height: 100svh;
+  }
+
+  .container {
+    min-height: 100svh;
+    padding: 5.5rem 1.25rem 2.5rem;
+  }
+
+  .videoWrapper {
+    width: 100%;
+  }
+}
+
 .videoResponsiveWrapper {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-  height: 0;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
 }
 

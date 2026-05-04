@@ -1,62 +1,80 @@
 import Script from "next/script";
 
 export const StructuredData = () => {
+  const baseUrl = "https://pulsebariloche.com.ar";
+
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "Pulse Bariloche",
-    description:
-      "Team building musical experiences in Bariloche using Rhythmic Sign Language. Unite your team through rhythm with professional group activities.",
-    url: "https://pulsebariloche.com.ar",
-    telephone: "+54-xxx-xxx-xxxx", // Agregar tu teléfono real
-    email: "federicopiaggio26@gmail.com",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "San Carlos de Bariloche",
-      addressRegion: "Río Negro",
-      addressCountry: "AR",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: -41.1335,
-      longitude: -71.3103,
-    },
-    serviceArea: {
-      "@type": "Place",
-      name: "Bariloche and surrounding areas",
-    },
-    priceRange: "$$",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      reviewCount: "15",
-    },
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Team Building Services",
-      itemListElement: [
-        {
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${baseUrl}/#website`,
+        url: baseUrl,
+        name: "Pulse Bariloche",
+        inLanguage: "es-AR",
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${baseUrl}/#webpage`,
+        url: baseUrl,
+        name: "Pulse Bariloche - Team Building Through Rhythm",
+        isPartOf: {
+          "@id": `${baseUrl}/#website`,
+        },
+        about: {
+          "@id": `${baseUrl}/#business`,
+        },
+        description:
+          "Unite your team through rhythm with Pulse Bariloche. Team building musical activities in Bariloche using Rhythmic Sign Language.",
+        inLanguage: "es-AR",
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": `${baseUrl}/#business`,
+        name: "Pulse Bariloche",
+        description:
+          "Team building musical experiences in Bariloche using Rhythmic Sign Language.",
+        url: baseUrl,
+        image: `${baseUrl}/opengraph-image`,
+        email: "federicopiaggio26@gmail.com",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "San Carlos de Bariloche",
+          addressRegion: "Río Negro",
+          addressCountry: "AR",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: -41.1335,
+          longitude: -71.3103,
+        },
+        areaServed: {
+          "@type": "Place",
+          name: "San Carlos de Bariloche y alrededores",
+        },
+        priceRange: "$$",
+        knowsAbout: [
+          "Team building",
+          "Rhythmic Sign Language",
+          "Experiencias musicales corporativas",
+        ],
+        makesOffer: {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Rhythmic Sign Language Team Building",
+            name: "Experiencia de Team Building con Ritmo",
             description:
-              "Interactive musical team building experience using Rhythmic Sign Language created by Santiago Vázquez",
+              "Actividad grupal musical para empresas y equipos usando Rhythmic Sign Language.",
           },
         },
-      ],
-    },
-    founder: {
-      "@type": "Person",
-      name: "Santiago Vázquez",
-      description:
-        "Argentinian percussionist and creator of Rhythmic Sign Language",
-    },
+      },
+    ],
   };
 
   return (
     <Script
       id="structured-data"
+      strategy="beforeInteractive"
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
     />
