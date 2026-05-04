@@ -73,12 +73,11 @@ export default function Welcome() {
           <div className={styles.joinMediaColumn}>
             <div className={styles.joinImageFlip}>
               <Image
-                className={clsx("rellax", styles.joinImage)}
+                className={clsx(styles.joinImage)}
                 src="/assets/duo-2.png"
                 alt="People playing percussion together"
                 width={1433}
                 height={942}
-                data-rellax-speed="1"
               />
             </div>
             <div className={styles.joinQuoteBlock}>
