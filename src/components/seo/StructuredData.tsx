@@ -35,7 +35,7 @@ export const StructuredData = () => {
         description:
           "Team building musical experiences in Bariloche using Rhythmic Sign Language.",
         url: baseUrl,
-        image: `${baseUrl}/opengraph-image`,
+        image: `${baseUrl}/opengraph-image?v=4`,
         email: "federicopiaggio26@gmail.com",
         address: {
           "@type": "PostalAddress",
@@ -74,7 +74,6 @@ export const StructuredData = () => {
   return (
     <Script
       id="structured-data"
-      strategy="beforeInteractive"
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
     />

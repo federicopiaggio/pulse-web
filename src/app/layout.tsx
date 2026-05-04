@@ -52,7 +52,7 @@ export const metadata: Metadata = {
       "Unite your team through rhythm with Pulse Bariloche. Experience team building musical activities in Bariloche using Rhythmic Sign Language.",
     images: [
       {
-        url: "/opengraph-image",
+        url: "/opengraph-image?v=4",
         width: 1200,
         height: 630,
         alt: "Pulse Bariloche - Team building musical experience",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     title: "Pulse Bariloche - Team Building Through Rhythm",
     description:
       "Unite your team through rhythm with Pulse Bariloche. Experience team building musical activities in Bariloche.",
-    images: ["/opengraph-image"],
+    images: ["/opengraph-image?v=4"],
   },
   icons: {
     icon: [{ url: "/assets/icon.svg", type: "image/svg+xml" }],
