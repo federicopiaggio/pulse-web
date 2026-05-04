@@ -70,6 +70,9 @@ export const metadata: Metadata = {
     icon: [{ url: "/assets/icon.svg", type: "image/svg+xml" }],
     apple: [{ url: "/assets/icon.svg" }],
   },
+  verification: {
+    google: "HrYyj4V9Osr90dyuwsDvRkkOmxKostV5U9ckxxQ8HGQ",
+  },
 };
 
 export default function RootLayout({
