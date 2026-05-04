@@ -11,22 +11,33 @@
 .body {
   font-family: var(--body);
   font-weight: 400;
-  font-size: 18px;
+  font-size: clamp(16px, 1.15vw, 18px);
 }
 
 .h1 {
-  font-size: 120px;
+  font-size: clamp(56px, 11vw, 120px);
+  line-height: 0.92;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .h2 {
-  font-size: 64px;
+  font-size: clamp(38px, 5.2vw, 64px);
 }
 
 .h3 {
-  font-size: 56px;
+  font-size: clamp(40px, 4.7vw, 56px);
 }
 
 .h5 {
-  font-size: 24px;
+  font-size: clamp(20px, 2.2vw, 24px);
+}
+
+@media (max-width: 767px) {
+  .h3 {
+    font-size: clamp(28px, 8.2vw, 40px);
+  }
+
+  .h5 {
+    font-size: clamp(17px, 5vw, 22px);
+  }
 }

@@ -22,12 +22,13 @@ export const About = () => {
           </div>
           <div className={styles.imageWrapper}>
             <Image
-              src="/assets/mati.jpg"
+              src="/assets/matias-2.png"
               alt="Photo of Matías Pergolani"
               className={styles.image}
-              width={600}
-              height={600}
-              style={{ objectFit: "cover" }}
+              width={1504}
+              height={946}
+              sizes="(min-width: 768px) 42vw, 92vw"
+              unoptimized
             />
           </div>
         </div>

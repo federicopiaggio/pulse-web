@@ -31,17 +31,18 @@ export default function Welcome() {
           width={1920}
           height={1080}
           data-rellax-speed="-1"
+          unoptimized
           priority
         />
         <div className={styles.content}>
           <Image
+            className={styles.heroLogo}
             width={400}
             height={100}
             src="/assets/icon.svg"
-            style={{ width: "100%", aspectRatio: "6/2" }}
             alt="icon"
           />
-          <Text as="h1" variant="heading" style={{ lineHeight: "120px" }}>
+          <Text as="h1" variant="heading" className={styles.heroTitle}>
             PULSE
           </Text>
           <Text variant="body">Unite your team through rhythm</Text>
@@ -50,48 +51,47 @@ export default function Welcome() {
       </section>
 
       {/* SECTION 2 */}
-      <section className={styles.section}>
-        <Image
-          className={clsx("rellax", styles.smallImage)}
-          style={{ right: "0", top: "40%" }}
-          src="/assets/foto5.jpg"
-          alt="slide 3"
-          width={400}
-          height={400}
-          data-rellax-speed="1"
-        />
-        <div
-          className={clsx("rellax", styles.content)}
-          style={{ justifyContent: "space-between" }}
-          data-rellax-speed="-1"
-        >
-          <div style={{ width: "50%" }}>
-            <div
-              style={{ display: "flex", gap: "10px", flexDirection: "column" }}
-            >
-              <Text as="h3" variant="heading">
-                Join the pulse
+      <section
+        id="experience"
+        className={clsx(styles.section, styles.joinSection)}
+      >
+        <div className={styles.joinGrid}>
+          <div className={styles.joinIntro}>
+            <Text as="h3" variant="heading">
+              Join the pulse
+            </Text>
+            <Text variant="body" as="h5" className={styles.joinDescription}>
+              Pulse is a team building musical experience.
+              <br />
+              We use the Rhythmic Sign Language created by Argentinian
+              percussionist Santiago Vázquez, to create live music, together.
+              <br />
+              As we are playing, we come together into a single pulse.
+            </Text>
+          </div>
+
+          <div className={styles.joinMediaColumn}>
+            <div className={styles.joinImageFlip}>
+              <Image
+                className={clsx("rellax", styles.smallImage, styles.joinImage)}
+                src="/assets/duo-2.png"
+                alt="People playing percussion together"
+                width={1433}
+                height={942}
+                data-rellax-speed="1"
+              />
+            </div>
+            <div className={styles.joinQuoteBlock}>
+              <Text as="h3" variant="heading" className={styles.joinQuoteLine}>
+                We lose ourselves, into the music //
               </Text>
-              <Text variant="body" as="h5" style={{ color: "#d1d5db" }}>
-                Pulse is a team building musical experience.
-                <br />
-                We use the Rhythmic Sign Language created by Argentinian
-                percussionist Santiago Vázquez, to create live music, together.
-                <br />
-                As we are playing, we come together into a single pulse.
+              <Text as="h3" variant="heading" className={styles.joinQuoteLine}>
+                {"//"} We find each other, becoming one
+              </Text>
+              <Text as="h3" variant="heading" className={styles.joinQuoteLine}>
+                We find ourselves again, new and unexpected //
               </Text>
             </div>
-          </div>
-          <div style={{ alignSelf: "flex-end", textAlign: "end" }}>
-            <Text as="h3" variant="heading">
-              We lose ourselves, into the music //
-            </Text>
-            <Text as="h3" variant="heading">
-              {"//"} We find each other, becoming one
-            </Text>
-            <Text as="h3" variant="heading">
-              We find ourselves again, new and unexpected //
-            </Text>
           </div>
         </div>
       </section>

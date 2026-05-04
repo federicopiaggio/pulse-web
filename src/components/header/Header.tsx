@@ -45,6 +45,8 @@ export const Header = () => {
           className={styles.mobileMenuButton}
           onClick={toggleMobileMenu}
           aria-label="Toggle mobile menu"
+          aria-controls="mobile-menu"
+          aria-expanded={isMobileMenuOpen}
         >
           <svg
             className={styles.hamburgerIcon}

@@ -4,8 +4,7 @@ import { z } from "zod";
 
 const resendApiKey = process.env.RESEND_API_KEY;
 const contactEmail = process.env.CONTACT_EMAIL;
-const resendFromEmail =
-  process.env.RESEND_FROM_EMAIL || "Pulse Bariloche <onboarding@resend.dev>";
+const resendFromEmail = process.env.RESEND_FROM_EMAIL;
 
 // Schema de validación
 const contactSchema = z.object({
@@ -29,6 +28,28 @@ export async function POST(request: NextRequest) {
       console.error("Missing CONTACT_EMAIL environment variable");
       return NextResponse.json(
         { error: "Server misconfiguration: missing CONTACT_EMAIL" },
+        { status: 500 },
+      );
+    }
+
+    if (!resendFromEmail) {
+      console.error("Missing RESEND_FROM_EMAIL environment variable");
+      return NextResponse.json(
+        {
+          error:
+            "Server misconfiguration: missing RESEND_FROM_EMAIL. Use an address from your verified domain, for example Pulse Bariloche <noreply@pulsebariloche.com.ar>",
+        },
+        { status: 500 },
+      );
+    }
+
+    if (resendFromEmail.includes("onboarding@resend.dev")) {
+      console.error("RESEND_FROM_EMAIL is using Resend test sender");
+      return NextResponse.json(
+        {
+          error:
+            "Server misconfiguration: RESEND_FROM_EMAIL must use your verified domain instead of onboarding@resend.dev",
+        },
         { status: 500 },
       );
     }

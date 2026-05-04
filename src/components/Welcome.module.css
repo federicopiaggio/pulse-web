@@ -35,8 +35,22 @@
   height: 100%;
   padding: 5% 8% 8% 8%;
   position: absolute;
-  gap: 10px;
+  gap: clamp(0.5rem, 1.2vw, 1.5rem);
   z-index: 4;
+  min-width: 248px;
+}
+
+.heroLogo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 6 / 2;
+  object-fit: contain;
+  margin-bottom: clamp(0.25rem, 1vw, 0.5rem);
+}
+
+.heroTitle {
+  line-height: 0.88;
+  margin-bottom: clamp(0.25rem, 0.8vw, 1rem);
 }
 
 .bannerContent {
@@ -55,8 +69,14 @@
   bottom: 0;
 }
 
+.bannerSection {
+  height: 100vh;
+  min-height: 640px;
+}
+
 .wrapperHalfHeight {
   height: 50%;
+  min-height: 320px;
   overflow: hidden;
   position: relative;
 }
@@ -79,4 +99,126 @@
   object-fit: contain;
   aspect-ratio: 1 / 1;
   filter: brightness(0.9);
+}
+
+.joinSection {
+  height: auto;
+  min-height: 100vh;
+  overflow: visible;
+  padding: 8rem 8% 6rem;
+}
+
+.joinGrid {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1.1fr);
+  align-items: start;
+  gap: 2.5rem;
+}
+
+.joinIntro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 32rem;
+}
+
+.joinDescription {
+  color: #d1d5db;
+  line-height: 1.45;
+}
+
+.joinMediaColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-end;
+}
+
+.joinImageFlip {
+  width: min(100%, 760px);
+  transform: scaleX(-1);
+}
+
+.joinImage {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.joinQuoteBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: right;
+  max-width: 58rem;
+}
+
+.joinQuoteLine {
+  line-height: 1.06;
+}
+
+@media (max-width: 1199px) {
+  .joinSection {
+    min-height: unset;
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+  }
+
+  .joinGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .joinIntro {
+    max-width: 100%;
+  }
+
+  .joinMediaColumn {
+    align-items: stretch;
+  }
+
+  .joinQuoteBlock {
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    min-height: 100svh;
+    height: auto;
+  }
+
+  .bannerSection {
+    height: 100svh;
+    min-height: 560px;
+  }
+
+  .wrapperHalfHeight {
+    min-height: 280px;
+  }
+
+  .bannerContent {
+    padding: 1.25rem;
+  }
+
+  .content {
+    padding: 5.5rem 1.5rem 2.5rem;
+    gap: clamp(0.35rem, 3vw, 0.8rem);
+  }
+
+  .heroTitle {
+    margin-bottom: clamp(0.4rem, 2vw, 0.8rem);
+  }
+
+  .joinSection {
+    padding: 5.5rem 1.5rem 3rem;
+  }
+
+  .joinQuoteBlock {
+    gap: 0.6rem;
+  }
 }

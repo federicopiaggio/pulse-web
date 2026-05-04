@@ -5,15 +5,16 @@ import styles from "../Welcome.module.css";
 
 export const Banner = () => {
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} ${styles.bannerSection}`}>
       <div className={styles.wrapperHalfHeight}>
         <Image
           className={styles.bgImage}
-          src="/assets/foto2.png"
+          src="/assets/gente-4.png"
           alt="Unity slide"
           width={1920}
           height={1080}
-          priority
+          unoptimized
+          style={{ transform: "scaleX(-1)" }}
         />
         <div
           className={styles.bannerContent}
@@ -32,7 +33,7 @@ export const Banner = () => {
       <div className={styles.wrapperHalfHeight}>
         <Image
           className={styles.bgImage}
-          src="/assets/foto3.png"
+          src="/assets/domo.webp"
           alt="Bring it slide"
           width={1920}
           height={1080}
