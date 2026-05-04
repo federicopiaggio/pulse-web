@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
 
 // Image metadata
 export const alt = "Pulse Bariloche - Team Building Through Rhythm";
@@ -16,12 +17,8 @@ export default async function OgImage() {
       : "http://localhost:3000";
 
   const [avenirBlack, avenirRegular] = await Promise.all([
-    fetch(new URL("../../public/fonts/Avenir-black.ttf", import.meta.url)).then(
-      (res) => res.arrayBuffer(),
-    ),
-    fetch(
-      new URL("../../public/fonts/Avenir-regular.ttf", import.meta.url),
-    ).then((res) => res.arrayBuffer()),
+    readFile(new URL("../../public/fonts/Avenir-black.ttf", import.meta.url)),
+    readFile(new URL("../../public/fonts/Avenir-regular.ttf", import.meta.url)),
   ]);
 
   return new ImageResponse(
