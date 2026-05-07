@@ -27,7 +27,7 @@ export default function Welcome() {
         <Image
           className={clsx("rellax", styles.bgImage)}
           src="/assets/foto1.webp"
-          alt="slide 1"
+          alt="Experiencia de team building musical en Bariloche — grupo tocando percusión juntos"
           width={1920}
           height={1080}
           data-rellax-speed="-1"
@@ -40,7 +40,7 @@ export default function Welcome() {
             width={400}
             height={100}
             src="/assets/icon.svg"
-            alt="icon"
+            alt="Pulse Bariloche — Team Building Musical"
           />
           <Text as="h1" variant="heading" className={styles.heroTitle}>
             PULSE
@@ -61,7 +61,7 @@ export default function Welcome() {
               Join the pulse
             </Text>
             <Text variant="body" as="h5" className={styles.joinDescription}>
-              Pulse is a team building musical experience.
+              Pulse is a musical team building experience in Bariloche, Patagonia.
               <br />
               We use the Rhythmic Sign Language created by Argentinian
               percussionist Santiago Vázquez, to create live music, together.

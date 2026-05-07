@@ -11,13 +11,15 @@ export const About = () => {
             <h2 className={styles.title}>About Me</h2>
             <h3 className={styles.subtitle}>Matías Pergolani</h3>
             <p className={styles.text}>
-              I&apos;m a percussionist and music teacher. I&apos;ve been working
-              with Rhythmic Sign Language for over ten years.
+              I&apos;m a percussionist and music teacher based in Bariloche.
+              I&apos;ve been working with Rhythmic Sign Language for over ten
+              years.
             </p>
             <p className={styles.text}>
               I&apos;ve worked with people of all ages, from different places
               and cultures, helping them connect through the universal language
-              of music.
+              of music — bringing teams together through rhythm in Bariloche and
+              across Patagonia.
             </p>
           </div>
           <div className={styles.imageWrapper}>
